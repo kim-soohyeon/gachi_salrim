@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "703864568861",
+    "firebase_url": "https://gachi-salrim-72ed8.firebaseio.com",
+    "project_id": "gachi-salrim-72ed8",
+    "storage_bucket": "gachi-salrim-72ed8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:703864568861:android:7091198431680c0328daf4",
+        "android_client_info": {
+          "package_name": "com.inhatc.gachi_salrim"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "703864568861-trhvvll2rrssl18ovl1qlj4uiqft3vn8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.inhatc.gachi_salrim",
+            "certificate_hash": "1cd26fb7b875c524f34cdbf4e32b8bbae36a1d3e"
+          }
+        },
+        {
+          "client_id": "703864568861-i3ttiadkjqileu6vjihb9hlat22ohkrj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBU5bHp1Bk7Jp35V7hkVFWOdHtuIv99p1U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "703864568861-i3ttiadkjqileu6vjihb9hlat22ohkrj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -20,7 +20,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="1000090dp"
+        android:layout_height="90dp"
         android:background="@null"
         android:src="@drawable/default_profile"
         android:layout_gravity="center"

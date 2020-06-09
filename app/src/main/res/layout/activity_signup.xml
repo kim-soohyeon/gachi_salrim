@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginLeft="40dp"
+    android:layout_marginRight="40dp">
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:text="SIGN UP"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="40dp"
+        android:layout_marginBottom="100dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:minWidth="100dp"
+            android:layout_height="match_parent"
+            android:text="아이디"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"/>
+        <EditText
+            android:id="@+id/editTxtId"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="아이디를 입력하세요."
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:minWidth="100dp"
+            android:layout_height="match_parent"
+            android:text="비밀번호"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"/>
+        <EditText
+            android:id="@+id/editTxtPw"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="비밀번호를 입력하세요."
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:minWidth="100dp"
+            android:layout_height="match_parent"
+            android:text="비밀번호확인"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"/>
+        <EditText
+            android:id="@+id/editTxtPwChk"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="비밀번호를 입력하세요."
+            />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/txtPwChkMsg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="비밀번호가 일치하지 않습니다."
+        android:layout_gravity="center"
+        android:gravity="center_vertical"
+        android:textColor="@android:color/holo_red_dark"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:minWidth="100dp"
+            android:layout_height="match_parent"
+            android:text="이메일"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"/>
+        <EditText
+            android:id="@+id/editTxtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="이메일을 입력하세요."
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:minWidth="100dp"
+            android:layout_height="match_parent"
+            android:text="지역"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"/>
+
+        <Spinner
+            android:id="@+id/spinArea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:tooltipText="지역선택" />
+    </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/btn_round"
+        android:textColor="#ffffff"
+        android:text="Sign Up"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/txtGotoLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Go to Login" />
+
+
+</LinearLayout>

@@ -37,6 +37,7 @@
         android:id="@+id/editPw"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:password="true"
         android:hint="비밀번호를 입력하세요."
         android:layout_marginBottom="16dp"
         />

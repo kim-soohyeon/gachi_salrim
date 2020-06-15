@@ -78,6 +78,7 @@
             android:id="@+id/editTxtPw"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:password="true"
             android:hint="비밀번호를 입력하세요."
             />
     </LinearLayout>
@@ -100,6 +101,7 @@
             android:id="@+id/editTxtPwChk"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:password="true"
             android:hint="비밀번호를 입력하세요."
             />
     </LinearLayout>

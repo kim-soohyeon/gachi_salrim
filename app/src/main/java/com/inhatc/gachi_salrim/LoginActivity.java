@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.ContentProviderClient;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -54,6 +55,7 @@ public class LoginActivity extends Activity {
         // 로그인 버튼
         btnLogin = findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener(){
+
             @Override
             public void onClick(View view){
                 final ProgressDialog mDialog = new ProgressDialog(LoginActivity.this);
@@ -74,7 +76,6 @@ public class LoginActivity extends Activity {
                             {
                                 mDialog.dismiss();
                                 Toast.makeText(getApplicationContext(),"로그인되었습니다.",Toast.LENGTH_SHORT).show();
-                                finish();
                                 return;
                             }
                             else

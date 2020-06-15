@@ -171,6 +171,7 @@
             android:tooltipText="지역선택" />
     </LinearLayout>
     <Button
+        android:id="@+id/btnSignup"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/btn_round"

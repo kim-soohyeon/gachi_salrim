@@ -66,7 +66,7 @@ public class SignupActivity extends Activity {
                 ,editEmail.getText().toString()
                 ,editPhone.getText().toString()
         );
-        mDatabase.child("users").child(editPhone.toString()).setValue(user)
+        mDatabase.child("users").child(editId.getText().toString()).setValue(user)
             .addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void aVoid) {

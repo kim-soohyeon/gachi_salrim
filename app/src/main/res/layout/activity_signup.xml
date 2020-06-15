@@ -16,8 +16,29 @@
         android:text="SIGN UP"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="40dp"
-        android:layout_marginBottom="100dp"/>
+        android:layout_marginBottom="80dp"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:minWidth="100dp"
+            android:layout_height="match_parent"
+            android:text="이름"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"/>
+        <EditText
+            android:id="@+id/editTxtNm"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="이름을 입력하세요."
+            />
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -60,6 +81,7 @@
             android:hint="비밀번호를 입력하세요."
             />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -81,14 +103,28 @@
             android:hint="비밀번호를 입력하세요."
             />
     </LinearLayout>
-    <TextView
-        android:id="@+id/txtPwChkMsg"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="비밀번호가 일치하지 않습니다."
         android:layout_gravity="center"
-        android:gravity="center_vertical"
-        android:textColor="@android:color/holo_red_dark"/>
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:minWidth="100dp"
+            android:layout_height="match_parent"
+            android:text="핸드폰번호"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"/>
+        <EditText
+            android:id="@+id/editTxtPone"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="-를 제외하고 입력하세요."
+            />
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

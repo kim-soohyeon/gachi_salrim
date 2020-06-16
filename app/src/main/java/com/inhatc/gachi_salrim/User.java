@@ -1,7 +1,5 @@
 package com.inhatc.gachi_salrim;
 
-
-
 import com.google.firebase.database.IgnoreExtraProperties;
 
 @IgnoreExtraProperties

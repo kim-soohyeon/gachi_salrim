@@ -16,7 +16,8 @@ public class CallAreaApi {
     // TODO : 선택한 지역의 api를 데이터베이스에서 가져와서 호출하는 Class
 
     public String strServiceUrl, strServiceKey, strServiceSigunNm, strUrl;
-    public JSONObject json;
+    public JSONObject responseData;
+    public String responseDataStr;
 
     public CallAreaApi(){}
 
@@ -25,7 +26,7 @@ public class CallAreaApi {
         this.strServiceKey = strServiceKey;
     }
 
-    public Object requestApi(){
+    public String requestApi(){
         if(strServiceKey == null){
             this.strServiceKey = "64e84652a0b14c23b2613ac31c62a42e";
         }
@@ -35,49 +36,12 @@ public class CallAreaApi {
         if(strServiceUrl == null){
             this.strServiceUrl = "https://openapi.gg.go.kr/RegionMnyFacltStus";
         }
-
-        strUrl = this.strServiceUrl + "?key=" + this.strServiceKey + "&type=json&SIGUN_NM=" + this.strServiceSigunNm + "&pSize=2";
+        // https://openapi.gg.go.kr/RegionMnyFacltStus?key=64e84652a0b14c23b2613ac31c62a42e&type=json&SIGUN_NM=용인시&pSize=2
+        strUrl = this.strServiceUrl + "?key=" + this.strServiceKey + "&type=json&SIGUN_NM=" + this.strServiceSigunNm;
         System.out.println(strUrl);
 
-        return new DownloadWebpageTask().execute(strUrl);
+        return strUrl;
+        //return new DownloadWebpageTask().execute(strUrl);
     }
 
-    private class DownloadWebpageTask extends AsyncTask<String, Void, String> {
-
-        @Override
-        protected String doInBackground(String... urls) {
-            try {
-                return (String)downloadUrl((String)urls[0]);
-            } catch(IOException e) {
-                return "Fail";
-            }
-        }
-
-        protected void onPostExecute(String result) {
-            //objTV.setText(result);
-            System.out.println("=============================================");
-            System.out.println(result.toString());
-            System.out.println("=============================================");
-        }
-
-        private String downloadUrl(String myurl) throws IOException {
-            HttpURLConnection urlConn = null;
-            try {
-                URL url = new URL(myurl);
-                urlConn = (HttpURLConnection) url.openConnection();
-                BufferedInputStream inBuf = new BufferedInputStream(urlConn.getInputStream());
-                BufferedReader bufReader = new BufferedReader(new InputStreamReader(inBuf, "utf-8"));
-
-                String strLine = null;
-                String strPage = "";
-                while((strLine = bufReader.readLine()) != null) {
-                    strPage += strLine;
-                }
-
-                return strPage;
-            } finally {
-                urlConn.disconnect();
-            }
-        }
-    }
 }

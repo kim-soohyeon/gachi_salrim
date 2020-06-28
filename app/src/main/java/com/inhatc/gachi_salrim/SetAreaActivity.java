@@ -16,6 +16,8 @@ public class SetAreaActivity extends AppCompatActivity {
     ArrayAdapter<CharSequence> adspin1, adspin2;
     Button complete_btn;
     Button gps_btn;
+    String SIGUN = "";
+    String DONG = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -584,7 +586,23 @@ public class SetAreaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), AreaMapsActivity.class);
+                Bundle mybundle = new Bundle();
+
+                String[] areas = area.split(" ");
+                if(areas.length == 2){
+                    SIGUN = area.split(" ")[0];
+                    DONG = area.split(" ")[1] + " " + areaTown;
+                }else {
+                    SIGUN = areas[0];
+                    DONG = areaTown;
+                }
+
+                mybundle.putString("SIGUN", SIGUN);
+                mybundle.putString("DONG", DONG);
+
+                intent.putExtras(mybundle);
                 startActivity(intent);
+                finish();
             }
         });
 

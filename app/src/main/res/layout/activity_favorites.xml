@@ -15,187 +15,187 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/ansan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/ansan" />
 
             <ImageView
-                android:id="@+id/imageView33"
+                android:id="@+id/yongin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/yongin" />
 
             <ImageView
-                android:id="@+id/imageView32"
+                android:id="@+id/yeoncheon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/yeoncheon" />
 
             <ImageView
-                android:id="@+id/imageView31"
+                android:id="@+id/yeoju"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/yeoju" />
 
             <ImageView
-                android:id="@+id/imageView29"
+                android:id="@+id/yangju"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/yangju" />
 
             <ImageView
-                android:id="@+id/imageView30"
+                android:id="@+id/yangpyeong"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/yangpyeong" />
 
             <ImageView
-                android:id="@+id/imageView26"
+                android:id="@+id/uijeongbu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/uijeongbu" />
 
             <ImageView
-                android:id="@+id/imageView28"
+                android:id="@+id/whasung"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/whasung" />
 
             <ImageView
-                android:id="@+id/imageView27"
+                android:id="@+id/uiwang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/uiwang" />
 
             <ImageView
-                android:id="@+id/imageView25"
+                android:id="@+id/suwon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/suwon" />
 
             <ImageView
-                android:id="@+id/imageView24"
+                android:id="@+id/siheung"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/siheung" />
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/ansung"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/ansung" />
 
             <ImageView
-                android:id="@+id/imageView5"
+                android:id="@+id/anyang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/anyang" />
 
             <ImageView
-                android:id="@+id/imageView6"
+                android:id="@+id/bucheon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/bucheon" />
 
             <ImageView
-                android:id="@+id/imageView7"
+                android:id="@+id/dongdocheon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/dongdocheon" />
 
             <ImageView
-                android:id="@+id/imageView8"
+                android:id="@+id/gapyeong"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/gapyeong" />
 
             <ImageView
-                android:id="@+id/imageView9"
+                android:id="@+id/gimpo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/gimpo" />
 
             <ImageView
-                android:id="@+id/imageView10"
+                android:id="@+id/goyang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/goyang" />
 
             <ImageView
-                android:id="@+id/imageView11"
+                android:id="@+id/guli"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/guli" />
 
             <ImageView
-                android:id="@+id/imageView12"
+                android:id="@+id/gunpo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/gunpo" />
 
             <ImageView
-                android:id="@+id/imageView13"
+                android:id="@+id/gwacheon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/gwacheon" />
 
             <ImageView
-                android:id="@+id/imageView14"
+                android:id="@+id/gwangju"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/gwangju" />
 
             <ImageView
-                android:id="@+id/imageView15"
+                android:id="@+id/gwangmyeong"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/gwangmyeong" />
 
             <ImageView
-                android:id="@+id/imageView16"
+                android:id="@+id/hanam"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/hanam" />
 
             <ImageView
-                android:id="@+id/imageView17"
+                android:id="@+id/icheon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/icheon" />
 
             <ImageView
-                android:id="@+id/imageView18"
+                android:id="@+id/namyang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/namyang" />
 
             <ImageView
-                android:id="@+id/imageView19"
+                android:id="@+id/osan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/osan" />
 
             <ImageView
-                android:id="@+id/imageView20"
+                android:id="@+id/paju"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/paju" />
 
             <ImageView
-                android:id="@+id/imageView21"
+                android:id="@+id/pocheon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/pocheon" />
 
             <ImageView
-                android:id="@+id/imageView22"
+                android:id="@+id/pyeongtaeg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/pyeongtaeg" />
 
             <ImageView
-                android:id="@+id/imageView23"
+                android:id="@+id/seongnam"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/seongnam" />

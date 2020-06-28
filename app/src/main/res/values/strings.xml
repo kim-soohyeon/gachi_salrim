@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">gachi_salrim</string>
+    <string name="sido"> 시구 선택 </string>
+    <string name="dong"> 동 선택 </string>
 </resources>

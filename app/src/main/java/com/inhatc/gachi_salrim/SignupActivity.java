@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -47,7 +48,12 @@ public class SignupActivity extends Activity {
         editPwChk = findViewById(R.id.editTxtPwChk);
         editEmail = findViewById(R.id.editTxtEmail);
         editPhone = findViewById(R.id.editTxtPone);
-        spinArea = findViewById(R.id.spinArea);
+        spinArea = findViewById(R.id.spinnerArea);
+
+        ArrayAdapter areaAdapter = ArrayAdapter.createFromResource(this,
+                R.array.item_area, android.R.layout.simple_spinner_item);
+        areaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinArea.setAdapter(areaAdapter);
 
         // 회원가입 버튼
         btnSingup = findViewById(R.id.btnSignup);
@@ -81,6 +87,7 @@ public class SignupActivity extends Activity {
                             ,editPw.getText().toString()
                             ,editEmail.getText().toString()
                             ,editPhone.getText().toString()
+                            ,spinArea.getSelectedItem().toString()
                     );
 
                     // 회원가입 진행

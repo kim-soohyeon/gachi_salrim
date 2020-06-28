@@ -124,7 +124,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             makerList.add(map);
         }
 
-        // 마커 리스트 가져와서 마커 생성후 표시하기
+        // 마커 리스트 가져와서 마커 생성후 표시하기 으으으으음
         for(Map<String,Object> m : makerList){
             String title = m.get("title").toString();
             Double lat = Double.parseDouble(m.get("lat").toString());

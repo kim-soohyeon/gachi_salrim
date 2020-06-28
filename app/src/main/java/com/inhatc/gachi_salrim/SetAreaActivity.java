@@ -1,9 +1,11 @@
 package com.inhatc.gachi_salrim;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,11 +14,16 @@ public class SetAreaActivity extends AppCompatActivity {
 
     String area, areaTown;
     ArrayAdapter<CharSequence> adspin1, adspin2;
+    Button complete_btn;
+    Button gps_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_area);
+
+        gps_btn = (Button) findViewById(R.id.gps_btn);
+        complete_btn = (Button) findViewById(R.id.complete_btn);
 
         final Spinner spin1 = (Spinner) findViewById(R.id.spinnerArea);
         final Spinner spin2 = (Spinner) findViewById(R.id.spinnerArea2);
@@ -570,6 +577,22 @@ public class SetAreaActivity extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
+            }
+        });
+
+        complete_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AreaMapsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        gps_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AreaMapsActivity.class);
+                startActivity(intent);
             }
         });
     }

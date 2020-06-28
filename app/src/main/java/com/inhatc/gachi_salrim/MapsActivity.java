@@ -22,6 +22,11 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -53,15 +58,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         long minTime = 1000;
         float minDistance = 1;
 
-        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        updateMap(null); // 구글 맵 업데이트
+
+        // ----------------------------------------------------------
         LocationManager locationManager = (LocationManager) this.
                 getSystemService(Context.LOCATION_SERVICE);
 
         LocationListener locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                updateMap(location);
+                //updateMap(location); // 구글 맵 업데이트
             }
 
             @Override
@@ -90,17 +98,42 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 minTime, minDistance, locationListener);
     }
 
+    // 구글 맵 업데이트 (현재위치로 맵 이동, api로 마커 찍기)
     public void updateMap(Location location){
-        double latitude = location.getLatitude();
-        double longitude = location.getLongitude();
-        final LatLng objLocation = new LatLng(latitude, longitude);
+        // 테스트
+        double latitude = 37.275264; // location.getLatitude()
+        double longitude = 127.009466; // location.getLongitude()
+        final LatLng objLocation = new LatLng(latitude, longitude); // 경기도청 위경도
+        // TODO : 테스트 마커 리스트 데이터
+        // TODO : 현재위치 == null or 설정된거주지역  == null => 기본으로 경기도로 설정
+        // TODO : 설정된거주지역  != null => 설정된 거주지역으로
+        // TODO : 현재위치 != null  and (현재위치 리스트 보기 버튼 클릭) => 현재위치로 설정
+        List<Map<String,Object>> makerList = new ArrayList<>();
+        for(int i =0;i<10;i++){
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("lat",latitude + i);
+            map.put("long",longitude + i);
+            map.put("title", "title (" + i + ")");
 
+            makerList.add(map);
+        }
+
+        for(Map<String,Object> m : makerList){
+            String title = m.get("title").toString();
+            Double lat = Double.parseDouble(m.get("lat").toString());
+            Double lon = Double.parseDouble(m.get("long").toString());
+            LatLng loc = new LatLng(lat,lon);
+
+            MarkerOptions makerOptions = new MarkerOptions();
+            makerOptions
+                    .position(loc)
+                    .title(title);
+
+            mMap.addMarker(makerOptions);
+        }
+        // 맵 이동, 확대
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(objLocation, 15));
-        Marker objMk = mMap.addMarker(new MarkerOptions()
-                .position(objLocation)
-                .title("Current Position")
-                .snippet("202047008 김수현"));
-        objMk.showInfoWindow();
+
     }
 
     public void checkProvider(String strProvider){

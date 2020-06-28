@@ -58,7 +58,7 @@ public class AreaMapsActivity extends AppCompatActivity {
 
         loadingMessage = (TextView) findViewById(R.id.loadingMessage);
 
-//        listViewFragment = new ListViewFragment();
+        listViewFragment = new ListViewFragment();
 //        mapFragment = new MapFragment();
 //        searchFragment = new SearchFragment();
 //        favoriteFragment = new FavoriteFragment();
@@ -98,11 +98,11 @@ public class AreaMapsActivity extends AppCompatActivity {
                 bundle.putString("SIGUN", SIGUN);
                 bundle.putString("DONG", DONG);
                 listViewFragment.setArguments(bundle);
-//                getSupportFragmentManager().beginTransaction().replace(R.id.container, listViewFragment).commit();
-//                map_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
-//                list_btn.setBackgroundColor(Color.parseColor("#F2F2F2"));
-//                search_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
-//                favorite_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, listViewFragment).commit();
+                map_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+                list_btn.setBackgroundColor(Color.parseColor("#F2F2F2"));
+                search_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+                favorite_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
 
             }
         });

@@ -10,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.telecom.Call;
@@ -23,6 +24,16 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -105,39 +116,40 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         double latitude = 37.275264; // location.getLatitude()
         double longitude = 127.009466; // location.getLongitude()
         final LatLng objLocation = new LatLng(latitude, longitude); // 경기도청 위경도
-        // TODO : 테스트 마커 리스트 데이터
+
         // TODO : 현재위치 == null or 설정된거주지역  == null => 기본으로 경기도로 설정
         // TODO : 설정된거주지역  != null => 설정된 거주지역으로
         // TODO : 현재위치 != null  and (현재위치 리스트 보기 버튼 클릭) => 현재위치로 설정
 
         CallAreaApi callAreaApi = new CallAreaApi();
-        callAreaApi.requestApi();
+        new DownloadWebpageTask().execute(callAreaApi.requestApi());
+
 
         // ==================================== 테스트 버전 =====================================
-        List<Map<String,Object>> makerList = new ArrayList<>();
-        for(int i =0;i<10;i++){
-            Map<String, Object> map = new HashMap<String, Object>();
-            map.put("lat",latitude + i);
-            map.put("long",longitude + i);
-            map.put("title", "title (" + i + ")");
-
-            makerList.add(map);
-        }
+//        List<Map<String,Object>> makerList = new ArrayList<>();
+//        for(int i =0;i<10;i++){
+//            Map<String, Object> map = new HashMap<String, Object>();
+//            map.put("lat",latitude + i);
+//            map.put("long",longitude + i);
+//            map.put("title", "title (" + i + ")");
+//
+//            makerList.add(map);
+//        }
 
         // 마커 리스트 가져와서 마커 생성후 표시하기 으으으으음
-        for(Map<String,Object> m : makerList){
-            String title = m.get("title").toString();
-            Double lat = Double.parseDouble(m.get("lat").toString());
-            Double lon = Double.parseDouble(m.get("long").toString());
-            LatLng loc = new LatLng(lat,lon);
-
-            MarkerOptions makerOptions = new MarkerOptions();
-            makerOptions
-                    .position(loc)
-                    .title(title);
-
-            mMap.addMarker(makerOptions);
-        }
+//        for(Map<String,Object> m : makerList){
+//            String title = m.get("title").toString();
+//            Double lat = Double.parseDouble(m.get("lat").toString());
+//            Double lon = Double.parseDouble(m.get("long").toString());
+//            LatLng loc = new LatLng(lat,lon);
+//
+//            MarkerOptions makerOptions = new MarkerOptions();
+//            makerOptions
+//                    .position(loc)
+//                    .title(title);
+//
+//            mMap.addMarker(makerOptions);
+//        }
 
         // ==================================== 테스트 버전 =====================================
 
@@ -163,4 +175,70 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Toast.LENGTH_LONG).show();
     }
 
+
+    private class DownloadWebpageTask extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... urls) {
+            try {
+                return (String)downloadUrl((String)urls[0]);
+            } catch(IOException e) {
+                return "Fail";
+            }
+        }
+
+        protected void onPostExecute(String result) {
+            //objTV.setText(result);
+            System.out.println("=============================================");
+            System.out.println(result.toString());
+            System.out.println("=============================================");
+            try{
+                JSONObject json = new JSONObject(result);
+                JSONArray jArry = json.getJSONArray("RegionMnyFacltStus");
+                JSONObject row = jArry.getJSONObject(1);
+                JSONArray realData = row.getJSONArray("row");
+                JSONObject jo;
+
+                for(int i = 0;i<realData.length();i++){
+                    jo = realData.getJSONObject(i);
+                    if(jo != null){
+                        String title = jo.get("CMPNM_NM").toString();
+                        Double lat = Double.parseDouble(jo.get("REFINE_WGS84_LAT").toString());
+                        Double lon = Double.parseDouble(jo.get("REFINE_WGS84_LOGT").toString());
+                        LatLng loc = new LatLng(lat,lon);
+
+                        MarkerOptions makerOptions = new MarkerOptions();
+                        makerOptions
+                                .position(loc)
+                                .title(title);
+
+                        mMap.addMarker(makerOptions);
+                    }
+                }
+            }
+            catch(JSONException je){
+                System.out.println(je.toString());
+            }
+        }
+
+        private String downloadUrl(String myurl) throws IOException {
+            HttpURLConnection urlConn = null;
+            try {
+                URL url = new URL(myurl);
+                urlConn = (HttpURLConnection) url.openConnection();
+                BufferedInputStream inBuf = new BufferedInputStream(urlConn.getInputStream());
+                BufferedReader bufReader = new BufferedReader(new InputStreamReader(inBuf, "utf-8"));
+
+                String strLine = null;
+                String strPage = "";
+                while((strLine = bufReader.readLine()) != null) {
+                    strPage += strLine;
+                }
+
+                return strPage;
+            } finally {
+                urlConn.disconnect();
+            }
+        }
+    }
 }

@@ -118,6 +118,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             makerList.add(map);
         }
 
+        // 마커 리스트 가져와서 마커 생성후 표시하기
         for(Map<String,Object> m : makerList){
             String title = m.get("title").toString();
             Double lat = Double.parseDouble(m.get("lat").toString());
@@ -133,7 +134,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         // 맵 이동, 확대
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(objLocation, 15));
-
+        CallAreaApi callAreaApi = new CallAreaApi();
+        callAreaApi.requestApi();
     }
 
     public void checkProvider(String strProvider){

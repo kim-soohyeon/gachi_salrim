@@ -7,6 +7,8 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -32,6 +34,7 @@ import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -42,6 +45,7 @@ import java.util.Map;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private Geocoder geocoder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +70,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        geocoder = new Geocoder(this);
         //실습 IV : Current Position 구현
         long minTime = 1000;
         float minDistance = 1;
@@ -112,10 +117,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     // 구글 맵 업데이트 (현재위치로 맵 이동, api로 마커 찍기)
     public void updateMap(Location location){
-        // 테스트 (용인시청)
-        double latitude = 37.241139; // location.getLatitude()
-        double longitude = 127.177932; // location.getLongitude()
-        final LatLng objLocation = new LatLng(latitude, longitude); // 경기도청 위경도
 
         // TODO : 현재위치 == null or 설정된거주지역  == null => 기본으로 경기도 용인시로 설정
         // TODO : 설정된거주지역  != null => 설정된 거주지역으로
@@ -123,6 +124,43 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         CallAreaApi callAreaApi = new CallAreaApi();
         new DownloadWebpageTask().execute(callAreaApi.requestApi());
+
+        // 지도 중앙설정 (테스트 : 용인시청)
+        double latitude = 37.241139; // location.getLatitude()
+        double longitude = 127.177932; // location.getLongitude()
+        try{
+            List<Address> adrList = new ArrayList<>();
+            String locationNm = callAreaApi.strServiceSigunNm + "청";
+            adrList = geocoder.getFromLocationName(locationNm,1);
+            System.out.println("==============================================");
+            System.out.println(adrList.get(0).toString());
+            System.out.println("==============================================");
+
+            // 콤마를 기준으로 split
+            String latStr = adrList.get(0).toString().split("latitude=")[1].split(",")[0];
+            String lonStr = adrList.get(0).toString().split("longitude=")[1].split(",")[0];
+            System.out.println("==============================================");
+            System.out.println( locationNm + " : " + latStr + " , " + lonStr);
+            System.out.println("==============================================");
+            // 좌표(위도, 경도) 생성
+
+            if(latStr != null && lonStr != null){
+                if(latStr.length() > 0 && lonStr.length() > 0){
+                    latitude = Double.parseDouble(latStr);
+                    longitude = Double.parseDouble(lonStr);
+                }
+            }
+            else{
+                latitude = location.getLatitude();
+                longitude = location.getLongitude();
+            }
+
+
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+
+        final LatLng objLocation = new LatLng(latitude, longitude); // 경기도청 위경도
 
 
         // ==================================== 테스트 버전 =====================================

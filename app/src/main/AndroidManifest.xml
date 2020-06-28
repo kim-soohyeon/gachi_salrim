@@ -22,7 +22,7 @@
 
         <activity android:name=".LoginActivity">
             <intent-filter>
-<!--                <action android:name="android.intent.action.MAIN" />-->
+                <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -35,7 +35,7 @@
             android:name=".MapsActivity"
             android:label="Map">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

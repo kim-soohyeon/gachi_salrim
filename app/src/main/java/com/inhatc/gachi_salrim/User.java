@@ -9,16 +9,18 @@ public class User {
     public String pw;
     public String email;
     public String phone;
+    public String area;
 
     public User(){}
 
-    public User(String name,String id,String pw,String email,String phone)
+    public User(String name,String id,String pw,String email,String phone,String area)
     {
         this.name = name;
         this.id = id;
         this.pw = pw;
         this.email = email;
         this.phone = phone;
+        this.area = area;
     }
 
     public void setName(String name) {
@@ -41,6 +43,10 @@ public class User {
         this.phone = phone;
     }
 
+    public void setArea(String area) {
+        this.area = area;
+    }
+
     public String getName() {
         return name;
     }
@@ -59,5 +65,9 @@ public class User {
 
     public String getPhone() {
         return phone;
+    }
+
+    public String getArea() {
+        return area;
     }
 }

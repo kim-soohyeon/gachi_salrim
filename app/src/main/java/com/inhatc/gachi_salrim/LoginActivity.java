@@ -76,7 +76,8 @@ public class LoginActivity extends Activity {
                             {
                                 mDialog.dismiss();
                                 Toast.makeText(getApplicationContext(),"로그인되었습니다.",Toast.LENGTH_SHORT).show();
-                                return;
+                                Intent intent = new Intent(LoginActivity.this,SetAreaActivity.class);
+                                startActivity(intent); // 지역안내 화면으로 이동
                             }
                             else
                             {

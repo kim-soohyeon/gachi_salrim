@@ -1,7 +1,9 @@
 package com.inhatc.gachi_salrim;
 
 import android.os.AsyncTask;
-import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -13,7 +15,8 @@ import java.net.URL;
 public class CallAreaApi {
     // TODO : 선택한 지역의 api를 데이터베이스에서 가져와서 호출하는 Class
 
-    private String strServiceUrl, strServiceKey, strServiceSigunNm, strUrl;
+    public String strServiceUrl, strServiceKey, strServiceSigunNm, strUrl;
+    public JSONObject json;
 
     public CallAreaApi(){}
 
@@ -22,7 +25,7 @@ public class CallAreaApi {
         this.strServiceKey = strServiceKey;
     }
 
-    public void requestApi(){
+    public Object requestApi(){
         if(strServiceKey == null){
             this.strServiceKey = "64e84652a0b14c23b2613ac31c62a42e";
         }
@@ -33,10 +36,10 @@ public class CallAreaApi {
             this.strServiceUrl = "https://openapi.gg.go.kr/RegionMnyFacltStus";
         }
 
-        strUrl = this.strServiceUrl + "?key=" + this.strServiceKey + "&type=xml&SIGUN_NM=" + this.strServiceSigunNm + "&pSize=2";
+        strUrl = this.strServiceUrl + "?key=" + this.strServiceKey + "&type=json&SIGUN_NM=" + this.strServiceSigunNm + "&pSize=2";
         System.out.println(strUrl);
 
-        new DownloadWebpageTask().execute(strUrl);
+        return new DownloadWebpageTask().execute(strUrl);
     }
 
     private class DownloadWebpageTask extends AsyncTask<String, Void, String> {

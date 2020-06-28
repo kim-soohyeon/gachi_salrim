@@ -12,6 +12,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.telecom.Call;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -108,6 +109,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // TODO : 현재위치 == null or 설정된거주지역  == null => 기본으로 경기도로 설정
         // TODO : 설정된거주지역  != null => 설정된 거주지역으로
         // TODO : 현재위치 != null  and (현재위치 리스트 보기 버튼 클릭) => 현재위치로 설정
+
+        CallAreaApi callAreaApi = new CallAreaApi();
+        callAreaApi.requestApi();
+
+        // ==================================== 테스트 버전 =====================================
         List<Map<String,Object>> makerList = new ArrayList<>();
         for(int i =0;i<10;i++){
             Map<String, Object> map = new HashMap<String, Object>();
@@ -132,10 +138,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             mMap.addMarker(makerOptions);
         }
+
+        // ==================================== 테스트 버전 =====================================
+
         // 맵 이동, 확대
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(objLocation, 15));
-        CallAreaApi callAreaApi = new CallAreaApi();
-        callAreaApi.requestApi();
+
     }
 
     public void checkProvider(String strProvider){

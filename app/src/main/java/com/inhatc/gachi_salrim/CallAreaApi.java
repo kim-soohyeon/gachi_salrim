@@ -16,7 +16,8 @@ public class CallAreaApi {
     // TODO : 선택한 지역의 api를 데이터베이스에서 가져와서 호출하는 Class
 
     public String strServiceUrl, strServiceKey, strServiceSigunNm, strUrl;
-    public JSONObject json;
+    public JSONObject responseData;
+    public String responseDataStr;
 
     public CallAreaApi(){}
 
@@ -25,7 +26,7 @@ public class CallAreaApi {
         this.strServiceKey = strServiceKey;
     }
 
-    public Object requestApi(){
+    public String requestApi(){
         if(strServiceKey == null){
             this.strServiceKey = "64e84652a0b14c23b2613ac31c62a42e";
         }
@@ -35,11 +36,12 @@ public class CallAreaApi {
         if(strServiceUrl == null){
             this.strServiceUrl = "https://openapi.gg.go.kr/RegionMnyFacltStus";
         }
-
+        // https://openapi.gg.go.kr/RegionMnyFacltStus?key=64e84652a0b14c23b2613ac31c62a42e&type=json&SIGUN_NM=용인시&pSize=2
         strUrl = this.strServiceUrl + "?key=" + this.strServiceKey + "&type=json&SIGUN_NM=" + this.strServiceSigunNm + "&pSize=2";
         System.out.println(strUrl);
 
-        return new DownloadWebpageTask().execute(strUrl);
+        return strUrl;
+        //return new DownloadWebpageTask().execute(strUrl);
     }
 
     private class DownloadWebpageTask extends AsyncTask<String, Void, String> {
@@ -53,8 +55,10 @@ public class CallAreaApi {
             }
         }
 
-        protected void onPostExecute(String result) {
+        protected void onPostExecute(JSONObject result) {
             //objTV.setText(result);
+            responseData = result;
+            responseDataStr = result.toString();
             System.out.println("=============================================");
             System.out.println(result.toString());
             System.out.println("=============================================");

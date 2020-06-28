@@ -30,7 +30,7 @@ public class SelectActivity extends Activity {
         strServiceKey = "64e84652a0b14c23b2613ac31c62a42e";
         strServiceSigunNm ="용인시";
 
-        strUrl = strServiceUrl + "?key=" + strServiceKey + "&type=xml&SIGUN_NM=" + strServiceSigunNm + "&pSize=2";
+        strUrl = strServiceUrl + "?key=" + strServiceKey + "&type=json&SIGUN_NM=" + strServiceSigunNm + "&pSize=2";
         System.out.println(strUrl);
 
         new DownloadWebpageTask().execute(strUrl);

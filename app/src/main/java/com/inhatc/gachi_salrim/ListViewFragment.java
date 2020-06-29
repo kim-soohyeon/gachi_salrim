@@ -61,7 +61,6 @@ public class ListViewFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                 Intent intent = new Intent(getActivity(), PopUpActivity.class);
 
                 Store obj = (Store) listView.getAdapter().getItem(position);
@@ -72,8 +71,6 @@ public class ListViewFragment extends Fragment {
                 mybundle.putString("DONG", DONG);
                 intent.putExtras(mybundle);
                 startActivity(intent);
-
-
             }
         });
         return rootView;

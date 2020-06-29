@@ -13,6 +13,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+
 import java.util.ArrayList;
 
 public class AreaMapsActivity extends AppCompatActivity {
@@ -28,6 +29,7 @@ public class AreaMapsActivity extends AppCompatActivity {
 
     // Fragments
     ListViewFragment listViewFragment;
+    MapFragment mapFragment;
 
     TextView loadingMessage;
     ArrayList<Store> stores = new ArrayList<>();
@@ -59,7 +61,7 @@ public class AreaMapsActivity extends AppCompatActivity {
         loadingMessage = (TextView) findViewById(R.id.loadingMessage);
 
         listViewFragment = new ListViewFragment();
-//        mapFragment = new MapFragment();
+        mapFragment = new MapFragment();
 //        searchFragment = new SearchFragment();
 //        favoriteFragment = new FavoriteFragment();
 
@@ -75,7 +77,6 @@ public class AreaMapsActivity extends AppCompatActivity {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-
                     CallAreaApi parser = new CallAreaApi();
                     stores = parser.getAllXmlData(SIGUN, DONG);
 
@@ -90,6 +91,25 @@ public class AreaMapsActivity extends AppCompatActivity {
             }).start();
         }
 
+        map_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loadingMessage.setText("");
+                Bundle bundle = new Bundle();
+                bundle.putParcelableArrayList("stores_key", stores);
+                bundle.putString("SIGUN", SIGUN);
+                bundle.putString("DONG", DONG);
+                mapFragment.setArguments(bundle);
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, mapFragment).commit();
+                map_btn.setBackgroundColor(Color.parseColor("#F2F2F2"));
+                list_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+                search_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+                favorite_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+
+            }
+        });
+
+        //리스트 보기 버튼 클릭시
         list_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -2,10 +2,8 @@ package com.inhatc.gachi_salrim;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.ContentProviderClient;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,8 +15,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.Iterator;
 
 import androidx.annotation.NonNull;
 

@@ -13,7 +13,6 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-
 import java.util.ArrayList;
 
 public class AreaMapsActivity extends AppCompatActivity {
@@ -23,13 +22,16 @@ public class AreaMapsActivity extends AppCompatActivity {
     // Buttons
     Button list_btn;
     Button map_btn;
-    Button search_btn;
-    Button findAdr_btn;
+//    Button search_btn;
+    Button info_btn;
     Button favorite_btn;
+    Button findAdr_btn;
 
     // Fragments
     ListViewFragment listViewFragment;
     MapFragment mapFragment;
+    InfoFragment infoFragment;
+    LocalFragment localFragment;
 
     TextView loadingMessage;
     ArrayList<Store> stores = new ArrayList<>();
@@ -54,16 +56,17 @@ public class AreaMapsActivity extends AppCompatActivity {
         // add_btn = (ImageButton) findViewById(R.id.add_btn);
         map_btn = (Button) findViewById(R.id.map_btn);
         list_btn = (Button) findViewById(R.id.list_btn);
-        search_btn = (Button) findViewById(R.id.search_btn);
-        findAdr_btn = (Button) findViewById(R.id.findAdr_btn);
+//        search_btn = (Button) findViewById(R.id.info_btn);
+        info_btn = (Button) findViewById(R.id.info_btn);
         favorite_btn=(Button) findViewById(R.id.favorite_btn);
+        findAdr_btn = (Button) findViewById(R.id.findAdr_btn);
 
         loadingMessage = (TextView) findViewById(R.id.loadingMessage);
 
         listViewFragment = new ListViewFragment();
         mapFragment = new MapFragment();
-//        searchFragment = new SearchFragment();
-//        favoriteFragment = new FavoriteFragment();
+        infoFragment = new InfoFragment();
+        localFragment = new LocalFragment();
 
         Intent data = getIntent();
         if(data != null) {
@@ -91,6 +94,7 @@ public class AreaMapsActivity extends AppCompatActivity {
             }).start();
         }
 
+        //지도 보기 버튼 클릭시
         map_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,7 +107,7 @@ public class AreaMapsActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, mapFragment).commit();
                 map_btn.setBackgroundColor(Color.parseColor("#F2F2F2"));
                 list_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
-                search_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+                info_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
                 favorite_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
 
             }
@@ -121,9 +125,30 @@ public class AreaMapsActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, listViewFragment).commit();
                 map_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
                 list_btn.setBackgroundColor(Color.parseColor("#F2F2F2"));
-                search_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+                info_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
                 favorite_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+            }
+        });
 
+        info_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, infoFragment).commit();
+                map_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+                list_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+                info_btn.setBackgroundColor(Color.parseColor("#F2F2F2"));
+                favorite_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+            }
+        });
+
+        favorite_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, localFragment).commit();
+                map_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+                list_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+                info_btn.setBackgroundColor(Color.parseColor("#00ff0000"));
+                favorite_btn.setBackgroundColor(Color.parseColor("#F2F2F2"));
             }
         });
     }

@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="#FAAC58">
+        android:background="#4682b4">
 
         <TextView
             android:id="@+id/store_name"
@@ -224,7 +224,7 @@
             android:gravity="center"
             android:padding="16dp"
             android:text="확인"
-            android:textColor="#FAAC58"
+            android:textColor="#4682b4"
             android:textSize="15sp" />
 
     </LinearLayout>

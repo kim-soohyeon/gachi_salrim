@@ -69,11 +69,12 @@ public class SignupActivity extends Activity {
 
     private void signUpUser(){
 
-
         // 아이디 중복 확인
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                System.out.println("ihi");
+
                 if(dataSnapshot.child("users").child(editId.getText().toString()).exists())
                 {
                     Toast.makeText(SignupActivity.this,"아이디가 존재합니다.",Toast.LENGTH_SHORT).show();
